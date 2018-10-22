@@ -264,4 +264,9 @@ body {
 
 .skin-red .main-header .navbar {
     background-color: #C00002!important;
+    border-bottom: 4px solid #FFBC47;
 }
+
+/*.navbar-nav>li>a {
+  color: #FFBC47!important;
+}*/
