@@ -14,10 +14,8 @@ import{RestaurantsService} from './restaurant/restaurants.service';
     constructor(private restaurantsService: RestaurantsService) {}
 
     ngOnInit() {
-      this.restaurants = this.restaurantsService.restaurants() 
-      /*A variável restaurants está recebendo a variável restaurantsService 
-      com o método restaurants do componente restaurants.component? */
-
+      this.restaurantsService.restaurants() 
+        .subscribe(restaurants => this.restaurants = restaurants)
     }
 
   }
