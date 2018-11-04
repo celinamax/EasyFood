@@ -30,20 +30,17 @@ export class RestaurantsService {
         .catch(ErrorHandler.handleError)
 
      }
-     reviewsOfRestaurant(id: string): Observable<any>{
-       return this.http.get(`${MEAT_API}/restaurants/${id}/reviews`)
-       .map(response => response.json())
-       .catch(ErrorHandler.handleError)
-     }
+     
      menuOfRestaurant(id: string): Observable<MenuItem[]>{
        return this.http.get(`${MEAT_API}/restaurants/${id}/menu`)
-        .map(response => response.json)
+        .map(response => response.json())
         .catch(ErrorHandler.handleError)
      }
-
-
-
-
+     reviewsOfRestaurant(id: string): Observable<any>{
+      return this.http.get(`${MEAT_API}/restaurants/${id}/reviews`)
+      .map(response => response.json())
+      .catch(ErrorHandler.handleError)
+    }
 
 
 }
