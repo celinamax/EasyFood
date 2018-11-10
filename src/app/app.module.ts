@@ -22,8 +22,9 @@ import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component'
 import { ShoppingCartService } from './restaurant-detail/shopping-cart/shopping-cart.service';
 import { OrderComponent } from './order/order.component';
 import { RadioComponent } from './shared/radio/radio.component';
-import { OrderItemsComponent } from './order/order-items/order-items.component';
 import { OrderService } from './order/order.service';
+import { OrderItemsComponent } from './order/order-items/order-items.component';
+
 
 
 
@@ -43,9 +44,8 @@ import { OrderService } from './order/order.service';
     ReviewsComponent,
     OrderComponent,
     RadioComponent,
-    OrderItemsComponent,
-   
-  ],
+    OrderItemsComponent
+    ],
   imports: [
     BrowserModule,
     HttpModule,

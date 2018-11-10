@@ -8,11 +8,11 @@ import { MenuComponent } from './restaurant-detail/menu/menu.component';
 import {ReviewsComponent} from './restaurant-detail/reviews/reviews.component';
 import { OrderComponent } from './order/order.component';
 
-
 export const ROUTES: Routes = [
   {path: '', component: HomeComponent},
   {path: 'restaurants', component: RestaurantsComponent},
   {path: 'restaurants/:id', component: RestaurantDetailComponent,
+
     children: [
       {path: '', redirectTo: 'menu', pathMatch: 'full'},
       {path: 'menu', component: MenuComponent},

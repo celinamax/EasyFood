@@ -2,6 +2,7 @@ import { CartItem } from './cart-item.model';
 import { MenuItem } from '../menu-item/menu-item.model';
 
 export class ShoppingCartService {
+
     items: CartItem[] = []
 
     clear(){
@@ -9,14 +10,22 @@ export class ShoppingCartService {
 
     }
 
+    itemsValue() {
+        return this.itemsValue()
+    }
+
     addItem(item:MenuItem) {
         let foundItem = this.items.find((mItem)=> mItem.menuItem.id === item.id)
         if(foundItem){
-            this.increaseQty(foundItem)
+            foundItem.quantity = foundItem.quantity + 1
 
         }else{
             this.items.push(new CartItem(item))
         }
+    }
+
+    removeItem(item: CartItem) {
+        this.items.splice(this.items.indexOf(item), 1)
 
     }
     increaseQty(item: CartItem) {
@@ -28,11 +37,6 @@ export class ShoppingCartService {
         if(item.quantity === 0) {
             this.removeItem(item)
         }
-    }
-
-    removeItem(item: CartItem) {
-        this.items.splice(this.items.indexOf(item), 1)
-
     }
 
     total(): number{

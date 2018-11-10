@@ -11,6 +11,10 @@ export class OrderService {
     cartItems(): CartItem[] {
         return this.cartService.items
     }
+    
+    itemsValue() {
+        return this.cartService.total()
+    }
 
     increaseQty(item: CartItem) {
         this.cartService.increaseQty(item)
@@ -23,6 +27,10 @@ export class OrderService {
     remove(item: CartItem) {
         this.cartService.removeItem(item)
     }
+
+    
+
+
 
 
 }

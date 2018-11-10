@@ -9,6 +9,7 @@ import { CartItem } from '../restaurant-detail/shopping-cart/cart-item.model';
   selector: 'mt-order',
   templateUrl: './order.component.html'
 })
+
 export class OrderComponent implements OnInit {
 
   paymentOptions: RadioOption[] = [
@@ -19,6 +20,10 @@ export class OrderComponent implements OnInit {
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
+  }
+
+  itemsValue(): number {
+    return this.orderService.itemsValue()
   }
 
   cartItems(): CartItem[] {
@@ -32,7 +37,9 @@ export class OrderComponent implements OnInit {
   decreaseQty(item: CartItem) {
     this.orderService.decreaseQty(item)
   }
-  removeItem(item: CartItem) {
+  remove(item: CartItem) {
     this.orderService.remove(item)
   }
+
+
 }

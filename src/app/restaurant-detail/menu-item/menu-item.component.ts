@@ -8,8 +8,8 @@ import {MenuItem} from './menu-item.model';
 })
 export class MenuItemComponent implements OnInit {
 
-  @Input() menuItem: MenuItem
-  @Output() add = new EventEmitter()
+  @Input() menuItem: MenuItem;
+  @Output() add = new EventEmitter();
 
   constructor() { }
 
