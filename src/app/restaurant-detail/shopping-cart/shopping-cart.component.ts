@@ -32,6 +32,14 @@ export class ShoppingCartComponent implements OnInit {
   addItem(item: any){
     this.shoppingCartService.addItem(item)
   }
-  
 
+  itemsValue() {
+    this.shoppingCartService.total()
+  }
+
+  // totalValue() {
+  //   this.shoppingCartService.totalValue()
+  // }
+
+  
 }
