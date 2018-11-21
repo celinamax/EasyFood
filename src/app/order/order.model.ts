@@ -8,7 +8,7 @@ class Order {
 }
 
 class OrderItem {
-    constructor(public quantity: number, public MenuId: string) {
+    constructor(public quantity: number, public MenuId: number) {
 
     }
 }

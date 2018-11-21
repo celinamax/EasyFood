@@ -3,10 +3,8 @@
 </section>
 
 <section class="content">
-  <section class="invoice">  
-        {{form.valid }}
-        {{form.value | json}}
-
+  <section class="invoice"> 
+    <form [formGroup]="orderForm" novalidate>      
         <!--Retirei o form-->
           <div class="row">
             <div class="col-xs-12">
@@ -32,34 +30,26 @@
             <div class="col-sm-6 col-xs-12">
               <p class="lead">Formas de Pagamento:</p>
 
-                <div class="form-group">  <!--Eu não criei o componente input-->                 
-                   <mt-radio [options]="paymentOptions" name="paymentOption" ngModel required></mt-radio>     
+                <div class="form-group">               
+                    <mt-radio [options]="paymentOptions" formControlName="paymentOption"></mt-radio>    
                 </div>
             </div>
-          </div>  
+         
             <!-- /.col -->
-            <div class="col-sm-6 col-xs-12">
-              <p class="lead">Total</p>
-          <!--<mt-shopping-cart **Não consigo injetar está informação no componente compra para totalizar o valor da compra
-                  [itemsValue]="itemsValue"
-                  [totalValue]="totalValue()"
-                ></mt-shopping-car>--> 
+            <div class="col-sm-6 col-xs-12">            
+              <mt-total-compras [totalCompra]="itemsValue()"></mt-total-compras>
             </div>
-          <!--retirei o form-->
-          <div class="row">
+          </div>            
+    </form>  
+          <div class="row"> 
               <div class="col-xs-12">
-                <a href="order-summary.html" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Concluir Pedido
-                </a>
-              </div>
-            </div>
-          <!-- <div class="row"> Código na Aula 66 em 6:16'
-              <div class="col-xs-12">
-                <button (click)="checkOrder(form.value)" class="btn btn-success pull-right"
-                  [disable]="cartItems().length === 0">
+                <button (click)="checkOrder(orderForm.value)" class="btn btn-success pull-right"
+                  [disabled]="cartItems().length === 0">
                     <i class="fa fa-credit-card"></i> Concluir Pedido
                 </button>
               </div>
-            </div> -->
+            </div>
+        
     </section>
 </section>
 <!-- FIM DO CONTEUDO-->

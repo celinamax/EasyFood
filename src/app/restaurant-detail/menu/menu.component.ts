@@ -1,31 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import { RestaurantsService } from '../../restaurants/restaurant/restaurants.service';
-import { MenuItem } from '../menu-item/menu-item.model';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { RestaurantsService } from "../../restaurants/restaurant/restaurants.service";
+import { MenuItem } from "../menu-item/menu-item.model";
 
-import { Observable } from 'rxjs/Observable';
-
+import { Observable } from "rxjs/Observable";
+import { MenuService } from "./menu.service";
 
 @Component({
-  selector: 'mt-menu',
-  templateUrl: './menu.component.html'
+  selector: "mt-menu",
+  templateUrl: "./menu.component.html"
 })
 export class MenuComponent implements OnInit {
+  menu: any;
 
-  menu: Observable<MenuItem[]>
-
-  constructor(private restaurantsService: RestaurantsService, 
-    private route: ActivatedRoute) { }
+  constructor(
+    private menuService: MenuService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.menu = this.restaurantsService
-    .menuOfRestaurant(this.route.parent.snapshot.params['id'])
-    console.log(this.menu)
+    this.menuService.getMenuOfRestaurant(
+      this.route.parent.snapshot.params["id"],
+      snapshot => {
+        this.menu = snapshot.item;
+      }
+    );
   }
 
-  addMenuItem(item: MenuItem){
-    console.log(item)
+  addMenuItem(item: MenuItem) {
+    console.log(item);
   }
-
-
 }

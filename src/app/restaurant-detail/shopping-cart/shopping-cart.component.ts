@@ -36,10 +36,5 @@ export class ShoppingCartComponent implements OnInit {
   itemsValue() {
     this.shoppingCartService.total()
   }
-
-  // totalValue() {
-  //   this.shoppingCartService.totalValue()
-  // }
-
-  
+ 
 }

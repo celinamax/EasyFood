@@ -26,6 +26,7 @@
         "../node_modules/admin-lte/dist/css/AdminLTE.min.css",
         "../node_modules/admin-lte/dist/css/skins/skin-red.min.css",
         "../node_modules/admin-lte/plugins/iCheck/flat/red.css",
+        "../node_modules/ngx-toastr/toastr.css",        
         "styles.css"
       ],
       "scripts": [

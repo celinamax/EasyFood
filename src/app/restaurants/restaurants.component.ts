@@ -14,9 +14,10 @@ import{RestaurantsService} from './restaurant/restaurants.service';
     constructor(private restaurantsService: RestaurantsService) {}
 
     ngOnInit() {
-      this.restaurantsService.restaurants()/*está sendo chamada a função restaurants*/
-        .subscribe(restaurants => this.restaurants = restaurants)
+      this.restaurants = this.restaurantsService.getRestaurants() /*está sendo chamada a função restaurants*/
+
     }
+    
 
   }
 

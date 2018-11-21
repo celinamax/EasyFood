@@ -1,0 +1,149 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="header-title">Editar Restaurante</h2>
+            <p>
+              <button
+                class="btn btn-primary"
+                style="margin-right:5px;"
+                [routerLink]="['/listrestaurant']"
+              >
+                Listar Restaurantes
+              </button>
+            </p>
+            <div class="row">
+              <div class="col-xs-12">
+                <form
+                  (ngSubmit)="onSubmit(restauranteForm)"
+                  #restauranteForm="ngForm"
+                >
+                  <div class="row">
+                    <div class="col-sm-5 form-group">
+                      <label for="id">Id</label>
+                      <input
+                        type="text"
+                        id="id"
+                        class="form-control"
+                        name="id"
+                        ngModel
+                        readonly
+                        required
+                      />
+                    </div>
+
+                    <div class="col-sm-5 form-group">
+                      <label for="name">Name</label>
+                      <input
+                        type="text"
+                        id="name"
+                        class="form-control"
+                        name="name"
+                        ngModel
+                        required
+                      />
+                    </div>
+                    <div class="col-sm-5 form-group">
+                      <label for="category">Categoria</label>
+                      <input
+                        type="text"
+                        id="category"
+                        class="form-control"
+                        name="category"
+                        ngModel
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-5 form-group">
+                      <label for="imagePath">Imagem</label>
+                      <input
+                        type="text"
+                        id="imagePath"
+                        class="form-control"
+                        name="imagePath"
+                        ngModel
+                        required
+                      />
+                    </div>
+                    <div class="col-sm-2 form-group">
+                      <label for="rating">Rating</label>
+                      <input                        
+                        step="any"
+                        min="0" 
+                        max="10"
+                        type="number"
+                        readonly
+                        id="rating"
+                        class="form-control"
+                        name="rating"
+                        ngModel
+                        required
+                        pattern="^[1-9]+[0-9]*$"
+                      />
+                    </div>
+                    <div class="col-sm-4 form-group">
+                      <label for="deliveryEstimate">Tempo Entrega</label>
+                      <input
+                        type="text"
+                        id="deliveryEstimate"
+                        class="form-control"
+                        name="deliveryEstimate"
+                        ngModel
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-5 form-group">
+                      <label for="about">Sobre</label>
+                      <input
+                        type="text"
+                        id="about"
+                        class="form-control"
+                        name="about"
+                        ngModel
+                        required
+                      />
+                    </div>
+                    <div class="col-sm-5 form-group">
+                      <label for="hours">Horário de atendimento</label>
+                      <input
+                        type="text"
+                        id="hours"
+                        class="form-control"
+                        name="hours"
+                        ngModel
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <button class="btn btn-success" type="submit">
+                        Salvar
+                      </button>
+
+                      <button
+                        class="btn btn-primary"
+                        type="button"
+                        (click)="onClear(restauranteForm)"
+                      >
+                        Limpar
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

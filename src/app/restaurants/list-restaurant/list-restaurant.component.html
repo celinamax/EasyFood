@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="header-title">Listagem de Restaurantes</h2>
+            <button
+              class="btn btn-primary"
+              style="margin-right:5px;"
+              [routerLink]="['/newrestaurant']"
+            >
+              Novo Restaurante
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="tabela-resultado">
+              <table class="table table-bordered table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Nome:</th>
+                    <th>Categoria:</th>
+                    <th>Tempo de entrega</th>
+                    <th>Nota:</th>
+                    <th>Sobre:</th>
+                    <th>Horário:</th>
+                    <th>Editar:</th>
+                    <th>Excluir:</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let restaurant of restaurants"
+                    data-toggle="popover"
+                    data-trigger="hover"
+                    data-placement="top"
+                  >
+                    <td class="text-center">{{ restaurant.id }}</td>
+                    <td class="text-center">{{ restaurant.name }}</td>
+                    <td class="text-center">{{ restaurant.category }}</td>
+                    <td class="text-center">
+                      {{ restaurant.deliveryEstimate }}
+                    </td>
+                    <td class="text-center">{{ restaurant.rating }}</td>
+                    <td class="text-center">{{ restaurant.about }}</td>
+                    <td class="text-center">{{ restaurant.hours }}</td>
+
+                    <td class="text-center">
+                      <button
+                        class="btn btn-warning"
+                        style="margin-right:5px;"
+                        [routerLink]="['/editrestaurant', restaurant.id]"
+                      >
+                        <span class="glyphicon glyphicon-open-file"
+                          >Editar</span
+                        >
+                      </button>
+                    </td>
+                    <td class="text-center">
+                      <button
+                        class="btn btn-danger"
+                        style="margin-right:5px;"
+                        (click)="removeRestaurant(restaurant.id)"
+                      >
+                        <span class="glyphicon glyphicon-trash">Excluir</span>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="text-center"
+                      colspan="9"
+                      *ngIf="restaurants.length == 0"
+                    >
+                      Nenhum Restaurante encontrado.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

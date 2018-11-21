@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 import {Router} from '@angular/router';
+import {FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms'
 
 import { RadioOption } from '../shared/radio/radio-option.model';
 import { OrderService } from './order.service';
 import { CartItem } from '../restaurant-detail/shopping-cart/cart-item.model';
 import { Order, OrderItem} from "./order.model";
+
 
 
 // import {ShoppingCartService } from '../restaurant-detail/shopping-cart/shopping-cart.service';
@@ -24,10 +26,14 @@ export class OrderComponent implements OnInit {
   ]
 
   constructor(private orderService: OrderService, 
-              private router: Router) { }
+              private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.orderForm = this.formBuilder.group({
+    paymentOption: this.formBuilder.control ('', [Validators.required])
+    })
   }
+  orderForm: FormGroup
 
   itemsValue(): number {
     return this.orderService.itemsValue()
@@ -51,7 +57,7 @@ export class OrderComponent implements OnInit {
 
   checkOrder(order: Order) {
     order.orderItems = this.cartItems()
-    .map((item:CartItem)=>new OrderItem(item.quantity, item.menuItem.id))
+    .map((item:CartItem)=> new OrderItem(item.quantity, item.menuItem.id))
   this.orderService.checkOrder(order)
     .subscribe((orderId: string ) =>{
       this.router.navigate(['/order-summary'])
@@ -59,9 +65,5 @@ export class OrderComponent implements OnInit {
     })
     console.log(order)
   }
-  // totalValue(): number {
-  //   return this.orderService.totalValue();
-  // }
-
-
+  
 }

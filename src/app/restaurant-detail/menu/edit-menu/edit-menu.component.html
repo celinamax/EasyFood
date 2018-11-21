@@ -1,0 +1,149 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="header-title">Editar Menu</h2>
+            <p>
+              <button
+                class="btn btn-primary"
+                style="margin-right:5px;"
+                [routerLink]="['/listmenu']"
+              >
+                Listar Menus
+              </button>
+            </p>
+            <div class="row">
+              <div class="col-xs-12">
+                <form (ngSubmit)="submit(menuForm)" #menuForm="ngForm">
+                  <div class="row">
+                    <div class="col-sm-5 form-group">
+                      <label for="id">Id</label>
+                      <input
+                        type="text"
+                        id="id"
+                        class="form-control"
+                        name="id"
+                        ngModel
+                        readonly
+                        required
+                      />
+                    </div>
+                    <div class="col-sm-5 form-group">
+                      <label for="name">Nome</label>
+                      <input
+                        type="text"
+                        id="name"
+                        class="form-control"
+                        name="name"
+                        ngModel
+                        required
+                      />
+                    </div>
+                    <div class="col-sm-5 form-group">
+                      <label for="imagePath">Imagem</label>
+                      <input
+                        type="text"
+                        id="imagePath"
+                        class="form-control"
+                        name="imagePath"
+                        ngModel
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5 form-group">
+                      <label for="description">Descrição</label>
+                      <input
+                        type="text"
+                        id="description"
+                        class="form-control"
+                        name="description"
+                        ngModel
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4 form-group">
+                      <label for="price">Preço</label>
+                      <input
+                        step="any"
+                        min="0" 
+                        max="10"
+                        type="number"
+                        id="price"
+                        class="form-control"
+                        name="price"
+                        ngModel
+                        required
+                        pattern="^[1-9]+[0-9]*$"
+                      />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5 form-group">
+                      <div class="btn-group">
+                        <label for="price">Restaurante:</label><br>
+                        <button type="button" class="btn btn-primary">
+                            {{nameSelectedRestaurant != null? 
+                            nameSelectedRestaurant: 'Restaurantes'}}
+                        </button> 
+                        <button
+                          type="button"
+                          class="btn btn-primary dropdown-toggle"
+                          data-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          <span class="caret"></span>
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                          <li *ngFor="let restaurant of restaurants">
+                            <span (click)="addIdRestaurant(restaurant.id,restaurant.name)">{{
+                              restaurant.name
+                            }}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div style="display:none" class="col-sm-5 form-group">
+                      <label for="restaurantId">ID do restaurant</label>
+                      <input
+                        type="text"
+                        id="restaurantId"
+                        class="form-control"
+                        name="restaurantId"
+                        ngModel
+                        readonly
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <button class="btn btn-success" type="submit">
+                        Salvar
+                      </button>
+
+                      <button
+                        class="btn btn-primary"
+                        type="button"
+                        (click)="onClear(menuForm)"
+                      >
+                        Limpar
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
